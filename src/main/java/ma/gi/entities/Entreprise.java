@@ -26,9 +26,8 @@ public class Entreprise implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Entreprise(Long code, String nom, String email, String raisonSociale) {
+	public Entreprise(String nom, String email, String raisonSociale) {
 		super();
-		this.code = code;
 		this.nom = nom;
 		this.email = email;
 		this.raisonSociale = raisonSociale;
