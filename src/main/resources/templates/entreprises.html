@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html 
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeLeaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="template">
+<head>
+<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}"/> 
+<title>Entreprises</title>
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Navbar</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item"><a th:href="@{/entreprises}" class="nav-link">Entreprises</a></li>
+		  <li class="nav-item"><a th:href="@{/taxes}" class="nav-link">Taxes</a></li>
+	    </ul>
+	    <form th:action="@{/entreprises}" class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="search" name="motCle" placeholder="Search" aria-label="Search">
+	      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+	    </form>
+	  </div>
+  </nav>
+</header>
+	
+<section>
+	<img src="../img/entreprise_img.jpg" class="card-img-top col-12">
+	<div class="card col-8 offset-2" style="margin-top:-50%;background: #6d719247">
+	<div class="card-body" style="background: #436c9000">
+		<h5 class="card-title">Liste Des Entreprises</h5>
+		<table class="table table-striped" >
+			<thead  class="thead-dark">
+				<th>Code</th>
+				<th>Nom</th>
+				<th>Raison Sociale</th>
+				<th>E-mail</th>
+			</thead>
+			<tr th:each="e:${ListEntreprise}">
+				<td th:text="${e.code}"></td>
+				<td th:text="${e.nom}"></td>
+				<td th:text="${e.raisonSociale}"></td>
+				<td th:text="${e.email}"></td>
+			</tr>
+		</table>
+		<div class="card-footer">
+			<ul class="nav nav-pills">
+				<li  th:class=" ${status.index == pageCourante} ? ' nav-item active ' : '' "  th:each="p,status:${pages}">
+					<a class="btn btn-danger m-1"  th:href="@{/entreprises(page=${status.index},motCle=${motCle})}" th:text="${status.index}"></a>
+				</li>
+			</ul>
+		</div>
+	  </div>
+	</div>
+</section>
+	
+<footer >
+	<div>
+		<small>Made With Love</small>
+	</div>
+</footer>
+</body>
+</html>

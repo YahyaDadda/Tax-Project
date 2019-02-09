@@ -27,16 +27,17 @@ public class TaxesProjectApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		/*
 		Entreprise e1 = entrepriseRepository.save(
 				new Entreprise("E1","E1@gmail.com","SARL"));
 		Entreprise e2 = entrepriseRepository.save(
 				new Entreprise("E2","E2@gmail.com","SARL"));
 		
-		taxeRepository.save(new TVA("TVA Habitation",new Date(),4300,e1));
-		taxeRepository.save(new TVA("TVA Voiture",new Date(),13400,e1));
-		taxeRepository.save(new IR("IR 2018",new Date(),40300,e1));
-		taxeRepository.save(new TVA("TVA Habitation",new Date(),1500,e2));
+		taxeRepository.save(new TVA("TVA Habitation",new Date(),4300,e2));
+		taxeRepository.save(new TVA("TVA Voiture",new Date(),13400,e2));
+		taxeRepository.save(new IR("IR 2018",new Date(),40300,e2));
+		taxeRepository.save(new TVA("TVA Habitation",new Date(),1500,e1));
+		*/
 		
 	}
 
