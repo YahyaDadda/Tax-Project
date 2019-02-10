@@ -9,14 +9,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Entreprise implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long code;
+	@NotNull
+	@Size(min=2,max=20)
 	private String nom;
+	@NotNull
+	@Email
 	private String email;
+	@NotNull
+	@Size(min=2,max=20)
 	private String raisonSociale;
 	@OneToMany(mappedBy="entreprise",fetch=FetchType.LAZY)
 	private Collection<Taxe> taxes;

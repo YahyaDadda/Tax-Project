@@ -8,7 +8,7 @@
 <meta charset="UTF-8"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/myStyle.css}"/> 
-<title>Entreprises</title>
+<title>Taxes</title>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 		  <li class="nav-item"><a th:href="@{/taxes}" class="nav-link">Taxes</a></li>
 		  <li class="nav-item"><a th:href="@{/saisie}" class="nav-link">Saisie</a></li>
 	    </ul>
-	    <form th:action="@{/entreprises}" class="form-inline my-2 my-lg-0">
+	    <form method="get" class="form-inline my-2 my-lg-0" >
 	      <input class="form-control mr-sm-2" type="search" name="motCle" placeholder="Search" aria-label="Search">
 	      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
 	    </form>
@@ -36,23 +36,22 @@
 	<img src="../img/entreprise_img.jpg" class="card-img-top col-12">
 	<div class="card col-8 offset-2" style="margin-top:-50%;background: #daefffd9">
 	<div class="card-body" style="background: #436c9000">
-		<h5 class="card-title">Liste Des Entreprises</h5>
+		<h5 class="card-title">Liste Des Taxes</h5>
 		<table class="table table-striped" >
 			<thead  class="thead-dark">
-				<th>Code</th>
-				<th>Nom</th>
-				<th>Raison Sociale</th>
-				<th>E-mail</th>
-				<th></th>
+				<th>Titre</th>
+				<th>Date</th>
+				<th>Montant</th>
+				<th>Type</th>
 			</thead>
-			<tr th:each="e:${ListEntreprise}">
-				<td th:text="${e.code}"></td>
-				<td th:text="${e.nom}"></td>
-				<td th:text="${e.raisonSociale}"></td>
-				<td th:text="${e.email}"></td>
-				<td ><a class="btn btn-warning " th:href="@{/taxes(code=${e.code})}">Taxes</a></td>
+			<tr th:each="t:${taxes}">
+				<td th:text="${t.titre}"></td>
+				<td th:text="${t.dateTaxe}"></td>
+				<td th:text="${t.montant}"></td>
+				<td th:text="${t.class.SimpleName}"></td>
 			</tr>
 		</table>
+		<!--  
 		<div class="card-footer">
 			<ul class="nav nav-pills">
 				<li  th:class=" ${status.index == pageCourante} ? ' nav-item active ' : '' "  th:each="p,status:${pages}">
@@ -60,6 +59,7 @@
 				</li>
 			</ul>
 		</div>
+		-->
 	  </div>
 	</div>
 </section>
