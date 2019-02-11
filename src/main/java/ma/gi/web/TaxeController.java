@@ -1,5 +1,6 @@
 package ma.gi.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ma.gi.dao.EntrepriseRepository;
 import ma.gi.dao.TaxeRepository;
 import ma.gi.entities.Entreprise;
+import ma.gi.entities.Taxe;
 
 @Controller
 public class TaxeController {
@@ -55,10 +57,14 @@ public class TaxeController {
 	}
 	
 	@RequestMapping(value="/taxes",method=RequestMethod.GET)
-	public String getEntrepriseTaxes(Model model, Long code) {
-		Entreprise e  = new Entreprise();
-		e.setCode(code);
-		model.addAttribute("taxes",taxeRepository.findByEntreprise(e));
+	public String getEntrepriseTaxes(Model model, @RequestParam(name="code", defaultValue="-1") Long code) {
+		if(code==-1)
+			model.addAttribute("texes",new ArrayList<Taxe>());
+		else {
+			Entreprise e  = new Entreprise();
+			e.setCode(code);
+			model.addAttribute("taxes",taxeRepository.findByEntreprise(e));
+		}
 		return "taxes";
 	}
 	
