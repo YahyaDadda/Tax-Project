@@ -24,8 +24,8 @@
 		    <label class="font-weight-bold text-primary" for="password">Password :</label>
 		    <input name="password" type="password" class="form-control" id="password">
 		  </div>
-		  <span th:if="${param.error}" class="form-text text-danger mb-3">User not found or password incorrect</span>
-		  <span th:if="${param.logout}" class="form-text text-warning mb-3">Successfully Disconnected</span>
+			<p th:if="${param.logout}" class="alert alert-warning">You have been logged out</p>
+			<p th:if="${param.error}" class="alert alert-danger">There was an error, please try again</p>
 		  <button type="submit" class="btn btn-success">Login</button>
 		</form>
 	  </div>
